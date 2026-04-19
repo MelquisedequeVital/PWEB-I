@@ -11,3 +11,8 @@
 .cdk-drag-dragging {
   @apply !opacity-70;
 }
+
+app-task {
+  display: block;
+  width: 100%;
+}
