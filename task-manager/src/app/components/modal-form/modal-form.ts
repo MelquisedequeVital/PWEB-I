@@ -1,4 +1,4 @@
-import { Component, inject, Input } from '@angular/core';
+import { Component, inject, Input, ViewChild } from '@angular/core';
 import { TaskService } from '../../services/task.service';
 import { FormsModule, NgForm } from '@angular/forms';
 import { TaskModel } from '../../model/task.model';
@@ -15,6 +15,7 @@ export class ModalFormComponent {
   protected taskService = inject(TaskService);
   protected uIService = inject(UIService);
   @Input() public taskToEdit: TaskModel | undefined;
+  @ViewChild('modal') form!: NgForm;
 
 
   onSubmit(modal: NgForm) {
@@ -22,22 +23,23 @@ export class ModalFormComponent {
     if (this.taskToEdit === undefined) {
       task.status = "todo";
       this.taskService.addTask(task);
-      modal.resetForm()
-      this.closeModal(modal)
+      this.closeModal()
     } else {
       task.id = this.taskToEdit.id;
       task.status = this.taskToEdit.status;
       this.taskService.updateTask(task);
-      this.closeModal(modal)
+      this.closeModal()
     }
 
   }
 
-  closeModal(modal: NgForm) {
+  closeModal() {
     this.uIService.hiddenClass.set("hidden");
-    modal.resetForm()
   }
 
-
+  openModal() {
+    this.form?.resetForm()
+    this.uIService.hiddenClass.set("");
+  }
 
 }

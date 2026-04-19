@@ -1,6 +1,6 @@
-import { Component, signal , inject} from '@angular/core';
+import { Component, signal , inject, ViewChild} from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { ModalFormComponent } from "./components/modal-form/modal-form";
+import { ModalFormComponent } from './components/modal-form/modal-form';
 import { MainComponent } from "./components/main/main";
 import { UIService } from './services/uiservice';
 import { TaskModel } from './model/task.model';
@@ -18,8 +18,11 @@ export class App {
 
   protected taskEditApp:TaskModel | undefined;
 
+  @ViewChild(ModalFormComponent) modalComponent!: ModalFormComponent;
+
   openModal(){
-    this.uIService.hiddenClass.set("")
+    this.taskEditApp = undefined;
+    this.modalComponent.openModal()
   }
 
   editModal(taskEdit: TaskModel){
