@@ -1,1 +1,13 @@
+@reference "../../../styles.css";
 
+.cdk-drag-preview {
+  @apply !opacity-70 !shadow-2xl;
+}
+
+.cdk-drag-placeholder {
+  @apply !opacity-30;
+}
+
+.cdk-drag-dragging {
+  @apply !opacity-70;
+}
