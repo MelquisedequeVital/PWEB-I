@@ -7,10 +7,10 @@
           <button id="close-form-btn" class="text-slate-500 hover:text-slate-800" (click)="closeModal(modal)">✕</button>
         </div>
 
-        <form #modal="ngForm" (ngSubmit)="onSubmit(modal)" id="task-form" class="grid grid-cols-1 md:grid-cols-3 gap-3 items-end">
+        <form #modal="ngForm" (ngSubmit)="onSubmit(modal)" ngNativeValidate id="task-form" class="grid grid-cols-1 md:grid-cols-3 gap-3 items-end">
           <div>
             <label class="text-sm text-slate-700">Título</label>
-            <input name="title" [ngModel]="taskToEdit?.title" required class="w-full mt-1 p-2 border rounded" />
+            <input name="title" [ngModel]="taskToEdit?.title?.trim()" pattern=".*\S.*" required class="w-full mt-1 p-2 border rounded" />
           </div>
           <div>
             <label class="text-sm text-slate-700">Data término</label>
