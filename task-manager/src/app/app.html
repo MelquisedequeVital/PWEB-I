@@ -1,0 +1,26 @@
+<body class="bg-slate-50 min-h-screen p-6">
+  <div class="max-w-6xl mx-auto">
+    <header class="mb-6">
+      <h1 class="text-3xl font-bold text-slate-800">Gerenciador de Tarefas - Estudos</h1>
+      <p class="text-slate-600 mt-1">Cards em 3 colunas: Para fazer, Em andamento, Concluídas.</p>
+    </header>
+
+    <div class="mb-6 flex items-center justify-between">
+      <div>
+        <p class="text-slate-600">Adicione novas tarefas pelo botão <span class="font-semibold">+</span>.</p>
+      </div>
+      <div>
+        <button id="open-form-btn" (click)="openModal()" aria-label="Adicionar tarefa" class="w-10 h-10 rounded-full bg-indigo-600 text-white flex items-center justify-center text-2xl hover:bg-indigo-700">+</button>
+      </div>
+    </div>
+
+
+    <app-modal-form [taskToEdit]="taskEditApp"></app-modal-form> 
+    
+    <app-main (editarTarefa)="editModal($event)"></app-main>
+
+    <footer class="mt-6 text-sm text-slate-500">Salvo no armazenamento local do seu navegador.</footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>

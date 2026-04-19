@@ -1,0 +1,26 @@
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+    <div>
+        <h2 class="font-semibold mb-2">Para fazer</h2>
+        <div id="col-todo" class="space-y-3 min-h-[200px] p-3 bg-white rounded shadow-sm" data-status="todo">
+            @for(task of todoTasks(); track task.id){
+            <app-task [id] = task.id [title]=task.title [due]=task.due [level]=task.level [desc]=task.desc (editar)="editTaskMain($event)"></app-task>
+            }
+        </div>
+    </div>
+    <div>
+        <h2 class="font-semibold mb-2">Em andamento</h2>
+        <div id="col-doing" class="space-y-3 min-h-[200px] p-3 bg-white rounded shadow-sm" data-status="doing">
+            @for(task of doingTasks(); track task.id){
+            <app-task [id] = task.id [title]=task.title [due]=task.due [level]=task.level [desc]=task.desc (editar)="editTaskMain($event)"></app-task>
+            }
+        </div>
+    </div>
+    <div>
+        <h2 class="font-semibold mb-2">Concluídas</h2>
+        <div id="col-done" class="space-y-3 min-h-[200px] p-3 bg-white rounded shadow-sm" data-status="done">
+            @for(task of doneTasks(); track task.id){
+            <app-task [id] = task.id [title]=task.title [due]=task.due [level]=task.level [desc]=task.desc (editar)="editTaskMain($event)"></app-task>
+            }
+        </div>
+    </div>
+</div>
